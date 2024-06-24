@@ -1,8 +1,14 @@
-# React + Vite
+# Pokedex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The pokedex is a device from the video game or animated series that allows you to view the statistics of the different pokemon.
 
-Currently, two official plugins are available:
+## 🚀 Technologies and tools used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ReactJS.
+- Vite.
+- sass.
+- React-icons.
+
+## 📊 Project status
+
+⌛ In progress
