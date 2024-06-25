@@ -9,6 +9,7 @@
 
 html {
   @include customScroll($highlight, $stroke, 0.1rem);
+  @include customSelection($highlight, $stroke);
 }
 
 /* We reset the margins and paddings of all labels. */
@@ -91,16 +92,6 @@ q:before,
 q:after {
   content: "";
   content: none;
-}
-
-/* We configure the text we select */
-::-moz-selection {
-  background-color: $tertiary;
-  color: $stroke;
-}
-::selection {
-  background-color: $tertiary;
-  color: $stroke;
 }
 
 /* We level typography and forms placement problems. */
