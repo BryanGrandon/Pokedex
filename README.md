@@ -8,6 +8,8 @@ The pokedex is a device from the video game or animated series that allows you t
 - Vite.
 - sass.
 - React-icons.
+- React-select
+- Api: [PokeAPI](https://pokeapi.co/)
 
 ## 📊 Project status
 
