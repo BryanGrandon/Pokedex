@@ -1,0 +1,7 @@
+@use "/src/styles/imports/tools.import" as *;
+@use "/src/styles/imports/settings.import" as *;
+
+.bg-shadow {
+  background-color: #00000091;
+  min-height: 100vh;
+}
