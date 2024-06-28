@@ -8,12 +8,14 @@
   gap: 0.5rem;
   padding: 1rem;
   width: 14rem;
-  background-color: #ff01012a;
+  color: #fff;
+  background-image: url("/src/assets/bg-pokemon-card.jpg");
+  background-size: cover;
+  background-position: center;
 
   &__number {
     letter-spacing: 1px;
     font-weight: bold;
-    // color: #000;
   }
 
   &__name {
