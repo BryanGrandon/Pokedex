@@ -6,18 +6,11 @@ function Home() {
   return (
     <article className="bg-shadow">
       <Header />
-      <main>
-        <article>
-          <section>
-            <h2>Filter</h2>
-
-            <form>
-              <input type="radio" name="status" value="fire" />
-              <input type="radio" name="status" value="water" />
-            </form>
-          </section>
-          <PokemonList />
-        </article>
+      <main className="main">
+        <section>
+          <h2>Filter</h2>
+        </section>
+        <PokemonList />
       </main>
       <footer></footer>
     </article>

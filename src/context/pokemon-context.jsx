@@ -14,7 +14,7 @@ function PokemonContextProvider({ children }) {
   const [PokemonList, setPokemonList] = useState([]);
   const [saved, setSaved] = useState([]);
 
-  const getAllPokemon = async (limit = 5) => {
+  const getAllPokemon = async (limit = 20) => {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -28,7 +28,7 @@ function PokemonContextProvider({ children }) {
     setPokemonList([...PokemonList, ...results]);
     setSaved([...PokemonList, ...results]);
 
-    setOffset(offset + 5);
+    setOffset(offset + 20);
   };
 
   const handlerClick = () => {
