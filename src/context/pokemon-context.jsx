@@ -10,9 +10,11 @@ const usePokemonContext = () => {
 // API
 
 function PokemonContextProvider({ children }) {
-  const [offset, setOffset] = useState(50);
+  const [offset, setOffset] = useState(0);
+  const [PokemonList, setPokemonList] = useState([]);
+  const [saved, setSaved] = useState([]);
 
-  const getAllPokemon = async (limit = 50) => {
+  const getAllPokemon = async (limit = 5) => {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -22,7 +24,15 @@ function PokemonContextProvider({ children }) {
       return data;
     });
     const results = await Promise.all(promise);
-    console.log(results);
+
+    setPokemonList([...PokemonList, ...results]);
+    setSaved([...PokemonList, ...results]);
+
+    setOffset(offset + 5);
+  };
+
+  const handlerClick = () => {
+    getAllPokemon();
   };
 
   useEffect(() => {
@@ -30,7 +40,9 @@ function PokemonContextProvider({ children }) {
   }, []);
 
   return (
-    <PokemonContext.Provider value={offset}>{children}</PokemonContext.Provider>
+    <PokemonContext.Provider value={{ saved, handlerClick }}>
+      {children}
+    </PokemonContext.Provider>
   );
 }
 
