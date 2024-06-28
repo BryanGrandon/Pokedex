@@ -6,18 +6,20 @@ function PokemonList() {
   let { handlerClick } = usePokemonContext();
 
   return (
-    <section className="pokemon-list">
-      {saved?.map((e) => (
-        <PokemonCard
-          key={e.id}
-          name={e.name}
-          number={e.id}
-          types={e.types}
-          img={e.sprites.other.dream_world.front_default}
-        />
-      ))}
+    <article>
+      <section className="pokemon-list">
+        {saved?.map((e) => (
+          <PokemonCard
+            key={e.id}
+            name={e.name}
+            number={e.id}
+            types={e.types}
+            img={e.sprites.other.dream_world.front_default}
+          />
+        ))}
+      </section>
       <button onClick={handlerClick}>More</button>
-    </section>
+    </article>
   );
 }
 

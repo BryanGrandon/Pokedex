@@ -3,19 +3,26 @@
 
 .pokemon {
   @include customFlex(column, nowrap, space-evenly, normal);
-  border: 2px solid $highlight;
-  border-radius: 1rem;
-  gap: 0.5rem;
-  padding: 1rem;
-  width: 14rem;
-  color: #fff;
+  gap: 0.8rem;
   background-image: url("/src/assets/bg-pokemon-card.jpg");
   background-size: cover;
   background-position: center;
+  box-shadow: 1px 1px 0.5rem #999999;
+  border: 2px solid $highlight;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $tertiary;
+    box-shadow: none;
+  }
 
   &__number {
     letter-spacing: 1px;
     font-weight: bold;
+    font-size: 1.1rem;
   }
 
   &__name {
@@ -30,7 +37,7 @@
     object-fit: contain;
     margin: auto;
     position: relative;
-    filter: drop-shadow(1px 1px 0.4rem $stroke);
+    filter: drop-shadow(1px 1px 0.2rem #fff);
   }
 
   &__types {
