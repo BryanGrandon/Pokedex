@@ -1,0 +1,50 @@
+@use "/src/styles/imports/tools.import" as *;
+@use "/src/styles/imports/settings.import" as *;
+
+.pokemon {
+  @include customFlex(column, nowrap, space-evenly, normal);
+  border: 2px solid $highlight;
+  border-radius: 1rem;
+  gap: 0.5rem;
+  padding: 1rem;
+  width: 14rem;
+  background-color: #ff01012a;
+
+  &__number {
+    letter-spacing: 1px;
+    font-weight: bold;
+    // color: #000;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+    font-variant: small-caps;
+    text-align: center;
+  }
+
+  &__sprites {
+    width: 8rem;
+    height: 8rem;
+    object-fit: contain;
+    margin: auto;
+    position: relative;
+    filter: drop-shadow(1px 1px 0.4rem $stroke);
+  }
+
+  &__types {
+    @include customFlex(row, nowrap, center, center);
+    gap: 1rem;
+
+    &-type {
+      border: 1px solid #fff;
+      border-radius: 1rem;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      text-transform: capitalize;
+      color: #fff;
+      padding: 0.2rem 1rem;
+      text-shadow: 3px 3px 8px $stroke;
+      box-shadow: 1px 1px 3px $stroke;
+    }
+  }
+}
