@@ -14,8 +14,13 @@ function PokemonCard({ name, number, types, img }) {
     pokemonTypes.push(info);
   });
 
+  const colorPokemonCard = {
+    borderColor: pokemonTypes[0].color,
+    boxShadow: `2px 2px .6rem ${pokemonTypes[0].color + 70}`,
+  };
+
   return (
-    <article className="pokemon">
+    <article className="pokemon" style={colorPokemonCard}>
       <section>
         <p className="pokemon__number">N°{pokemonNumber}</p>
       </section>
@@ -30,7 +35,7 @@ function PokemonCard({ name, number, types, img }) {
           <p
             key={type.id}
             className={`pokemon__types-type type-${type.name}`}
-            style={{ background: type.color }}
+            style={{ color: type.color, borderColor: type.color }}
           >
             {type.name}
           </p>
