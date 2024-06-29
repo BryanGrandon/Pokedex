@@ -5,6 +5,7 @@
   max-width: 1200px;
   margin: auto;
   padding: 1rem;
+  min-height: 100vh;
 
   &__info {
     @include customFlex(column, nowrap, normal, center);
@@ -19,7 +20,8 @@
 
     &-img {
       width: auto;
-      height: 18rem;
+      height: 25rem;
+      object-fit: contain;
     }
   }
 }

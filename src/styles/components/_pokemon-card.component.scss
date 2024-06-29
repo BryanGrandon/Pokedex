@@ -1,28 +1,28 @@
 @use "/src/styles/imports/tools.import" as *;
 @use "/src/styles/imports/settings.import" as *;
 
+// by dynamic colors of the pokemon-card.jsx
+.pokemon:hover {
+  border-color: $highlight !important;
+  box-shadow: none !important;
+}
+
 .pokemon {
   @include customFlex(column, nowrap, space-evenly, normal);
   gap: 0.8rem;
   background-image: url("/src/assets/bg-pokemon-card.jpg");
   background-size: cover;
   background-position: center;
-  box-shadow: 1px 1px 0.5rem #999999;
-  border: 2px solid $highlight;
+  border: 2px solid;
   border-radius: 1rem;
   padding: 1rem;
   color: #fff;
   cursor: pointer;
 
-  &:hover {
-    border-color: $tertiary;
-    box-shadow: none;
-  }
-
   &__number {
     letter-spacing: 1px;
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-family: "Edit Undo BRK", sans-serif;
   }
 
   &__name {
@@ -45,15 +45,13 @@
     gap: 1rem;
 
     &-type {
-      border: 1px solid #fff;
-      border-radius: 1rem;
-      font-family: "Courier New", Courier, monospace;
-      font-weight: bold;
-      text-transform: capitalize;
-      color: #fff;
-      padding: 0.2rem 1rem;
-      text-shadow: 3px 3px 8px $stroke;
-      box-shadow: 1px 1px 3px $stroke;
+      border-radius: 0.6rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Edit Undo BRK", sans-serif;
+      letter-spacing: 1px;
+      padding: 0.1rem 1rem;
+      background: #00000085;
+      border: 1px solid transparent;
     }
   }
 }
