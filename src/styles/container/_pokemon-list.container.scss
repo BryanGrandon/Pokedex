@@ -1,5 +1,19 @@
+@use "/src/styles/imports/settings.import" as *;
+@use "/src/styles/imports/tools.import" as *;
+
+.pokemon-article {
+  @include customFlex(column, nowrap, normal, normal);
+  gap: 1rem;
+}
+
 .pokemon-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 1rem;
+}
+
+.button-list {
+  margin: auto;
+  padding: 0.3rem 2rem;
+  font-weight: bold;
 }
