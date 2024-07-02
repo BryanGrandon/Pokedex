@@ -1,0 +1,23 @@
+@use "/src/styles/imports/settings.import" as *;
+@use "/src/styles/imports/tools.import" as *;
+
+.button-main {
+  @include customFlex(row, nowrap, normal, center);
+  gap: 0.5rem;
+  border: 2px solid $stroke;
+  border-radius: 1rem;
+  padding: 0.3rem 1rem;
+  background-color: $highlight;
+  color: $stroke;
+  transition: background 0.3s ease-in;
+
+  &:hover {
+    border-color: $highlight;
+    background: $stroke;
+    color: $highlight;
+  }
+
+  &:active {
+    box-shadow: 2px 2px 6px #ffffff70 inset;
+  }
+}
