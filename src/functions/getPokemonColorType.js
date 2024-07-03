@@ -14,8 +14,9 @@ const getPokemonColorType = (type) => {
     normal: "#95afc0",
     poison: "#6c5ce7",
     psychic: "#a29bfe",
-    rock: "#2d3436",
+    rock: "#685a5a",
     water: "#0190FF",
+    steel: "#728fa0",
   };
   let bg;
   Object.entries(typeColor).forEach((color) => {
