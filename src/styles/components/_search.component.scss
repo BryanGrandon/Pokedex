@@ -4,5 +4,8 @@
 .search {
   border: 2px solid $highlight;
   border-radius: 0.3rem;
-  padding: 0.2rem 1rem;
+  &__input {
+    padding: 0.2rem 1rem;
+    width: 100%;
+  }
 }

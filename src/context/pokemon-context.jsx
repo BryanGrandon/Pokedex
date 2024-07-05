@@ -51,13 +51,38 @@ function PokemonContextProvider({ children }) {
     getTwentyPokemon();
   };
 
+  //Search
+
+  const handlerChangeSearch = async (e) => {
+    let value = e.target.value;
+
+    if (value !== "") {
+      const filtering = pokemonAll.filter(
+        (e) => e.name.includes(value) || e.id.toString().includes(value)
+      );
+
+      const promise = filtering.map(async (pokemon) => {
+        const result = await fetch(pokemon.url);
+        const info = await result.json();
+        return info;
+      });
+      const results = await Promise.all(promise);
+      // setOffset();
+      setSaved(results);
+    } else {
+      setSaved(twentyPokemon);
+    }
+  };
+
   useEffect(() => {
     getAllPokemon();
     getTwentyPokemon();
   }, []);
 
   return (
-    <PokemonContext.Provider value={{ saved, handlerClick }}>
+    <PokemonContext.Provider
+      value={{ saved, handlerClick, handlerChangeSearch }}
+    >
       {children}
     </PokemonContext.Provider>
   );
