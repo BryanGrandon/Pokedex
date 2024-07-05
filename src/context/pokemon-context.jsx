@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { getPokemon } from "../functions/getPokemon";
 
 const PokemonContext = createContext();
 
@@ -11,32 +12,28 @@ const usePokemonContext = () => {
 
 function PokemonContextProvider({ children }) {
   const [offset, setOffset] = useState(0);
+  const [twentyPokemon, setTwentyPokemon] = useState([]);
   const [saved, setSaved] = useState([]);
   const [pokemonAll, setPokemonAll] = useState();
 
   const getAllPokemon = async () => {
-    const urlAllPokemon = `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`;
-    const result = await fetch(urlAllPokemon);
-    const dataAll = await result.json();
-    const dataPokemon = dataAll.results;
-    const pokemonNames = dataPokemon.map((e) => e.name);
-    const data = [];
+    const data = await getPokemon(100000, 0);
+    const pokemonNames = data.results.map((e) => e.name);
+    const dataAll = [];
 
-    dataPokemon.map((e) => {
+    data.results.map((e) => {
       const info = {
         id: pokemonNames.indexOf(e.name) + 1,
         name: e.name,
         url: e.url,
       };
-      data.push(info);
+      dataAll.push(info);
     });
-    setPokemonAll(data);
+    setPokemonAll(dataAll);
   };
 
   const getTwentyPokemon = async (limit = 20) => {
-    const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-    const result = await fetch(url);
-    const data = await result.json();
+    const data = await getPokemon(limit, offset);
     const promise = data.results.map(async (pokemon) => {
       const result = await fetch(pokemon.url);
       const data = await result.json();
@@ -44,10 +41,12 @@ function PokemonContextProvider({ children }) {
     });
     const results = await Promise.all(promise);
 
-    setSaved([...saved, ...results]);
+    setSaved([...twentyPokemon, ...results]);
+    setTwentyPokemon([...twentyPokemon, ...results]);
     setOffset(offset + 20);
   };
 
+  // Button Load more pokemon
   const handlerClick = () => {
     getTwentyPokemon();
   };
