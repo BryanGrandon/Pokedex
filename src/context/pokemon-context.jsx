@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getPokemon } from "../functions/getPokemon";
+import { getGeneralInfo, getSpecificInfo } from "../functions/getInfo";
 
 const PokemonContext = createContext();
 
@@ -8,22 +8,20 @@ const usePokemonContext = () => {
   return useContext(PokemonContext);
 };
 
-// API
-
 function PokemonContextProvider({ children }) {
-  const [offset, setOffset] = useState(0);
-  const [twentyPokemon, setTwentyPokemon] = useState([]);
   const [saved, setSaved] = useState([]);
+
+  // Get all pokemon
   const [pokemonAll, setPokemonAll] = useState();
 
   const getAllPokemon = async () => {
-    const data = await getPokemon(100000, 0);
-    const pokemonNames = data.results.map((e) => e.name);
+    const data = await getGeneralInfo(100000, 0);
     const dataAll = [];
 
     data.results.map((e) => {
+      let id = e.url.split("/");
       const info = {
-        id: pokemonNames.indexOf(e.name) + 1,
+        id: id.at(-2),
         name: e.name,
         url: e.url,
       };
@@ -32,14 +30,13 @@ function PokemonContextProvider({ children }) {
     setPokemonAll(dataAll);
   };
 
+  // Get twenty pokemon
+  const [offset, setOffset] = useState(0);
+  const [twentyPokemon, setTwentyPokemon] = useState([]);
+
   const getTwentyPokemon = async (limit = 20) => {
-    const data = await getPokemon(limit, offset);
-    const promise = data.results.map(async (pokemon) => {
-      const result = await fetch(pokemon.url);
-      const data = await result.json();
-      return data;
-    });
-    const results = await Promise.all(promise);
+    const data = await getGeneralInfo(limit, offset);
+    const results = await getSpecificInfo(data.results);
 
     setSaved([...twentyPokemon, ...results]);
     setTwentyPokemon([...twentyPokemon, ...results]);
@@ -47,29 +44,39 @@ function PokemonContextProvider({ children }) {
   };
 
   // Button Load more pokemon
+
   const handlerClick = () => {
-    getTwentyPokemon();
+    if (!inChange) getTwentyPokemon();
+    else clickSearch();
   };
 
   //Search
+  const [search, setSearch] = useState([]);
+  const [limit, setLimit] = useState(0);
+  const [inChange, setInChange] = useState(false);
+
+  const clickSearch = async () => {
+    const results = await getSpecificInfo(search.slice(limit, limit + 20));
+    setLimit(limit + 20);
+    setSaved([...saved, ...results]);
+  };
 
   const handlerChangeSearch = async (e) => {
     let value = e.target.value;
 
     if (value !== "") {
-      const filtering = pokemonAll.filter(
-        (e) => e.name.includes(value) || e.id.toString().includes(value)
-      );
+      setInChange(true);
 
-      const promise = filtering.map(async (pokemon) => {
-        const result = await fetch(pokemon.url);
-        const info = await result.json();
-        return info;
-      });
-      const results = await Promise.all(promise);
-      // setOffset();
+      let filtering = !isNaN(Number(value))
+        ? pokemonAll.filter((e) => e.id.toString().includes(Number(value)))
+        : pokemonAll.filter((e) => e.name.includes(value));
+
+      const results = await getSpecificInfo(filtering.slice(0, 20));
+      setSearch(filtering);
       setSaved(results);
+      setLimit(20);
     } else {
+      setInChange(false);
       setSaved(twentyPokemon);
     }
   };

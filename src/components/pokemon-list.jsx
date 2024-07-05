@@ -6,6 +6,7 @@ function PokemonList() {
   let { saved } = usePokemonContext();
   let { handlerClick } = usePokemonContext();
 
+  // img = e.sprites.other.dream_world.front_default
   return (
     <article className="pokemon-article">
       <section className="pokemon-list">
@@ -15,7 +16,13 @@ function PokemonList() {
             name={e.name}
             number={e.id}
             types={e.types}
-            img={e.sprites.other.dream_world.front_default}
+            img={
+              e.sprites.other.dream_world.front_default
+                ? e.sprites.other.dream_world.front_default
+                : e.sprites.other.home.front_default
+                ? e.sprites.other.home.front_default
+                : e.sprites.other["official-artwork"].front_default
+            }
           />
         ))}
       </section>
