@@ -10,4 +10,23 @@
   max-width: 1200px;
   margin: auto;
   padding: 1rem;
+  @include customFlex(column, nowrap, normal, normal);
+  gap: 2rem;
+}
+
+.options {
+  @include customFlex(row, nowrap, space-between, center);
+
+  &__search {
+    @include customFlex(row, nowrap, normal, center);
+    gap: 0.5rem;
+    border: 2px solid $highlight;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.2rem;
+
+    &-icon {
+      font-size: 1.6rem;
+      color: $highlight;
+    }
+  }
 }
