@@ -1,20 +1,13 @@
-import { CiSearch } from "react-icons/ci";
+import Filter from "../components/filter";
 import Header from "../components/header";
 import PokemonList from "../components/pokemon-list";
-import Search from "../components/search";
 
 function Home() {
   return (
     <article className="bg-shadow">
       <Header />
       <main className="main">
-        <section className="options">
-          <h2>Filter</h2>
-          <label className="options__search">
-            <CiSearch className="options__search-icon" />
-            <Search />
-          </label>
-        </section>
+        <Filter />
         <PokemonList />
       </main>
       <footer></footer>

@@ -1,0 +1,25 @@
+@use "/src/styles/imports/tools.import" as *;
+@use "/src/styles/imports/settings.import" as *;
+
+.options {
+  @include customFlex(row, wrap, space-between, center);
+
+  &__search {
+    @include customFlex(row, nowrap, normal, center);
+    gap: 0.5rem;
+    border: 2px solid $highlight;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.2rem;
+
+    &-icon {
+      font-size: 1.6rem;
+      color: $highlight;
+    }
+  }
+}
+
+@media screen and (max-width: 524px) {
+  .options__search {
+    width: 100%;
+  }
+}
