@@ -3,12 +3,18 @@
 
 .options {
   @include customFlex(row, wrap, space-between, center);
+  gap: 0.8rem;
+
+  &__select {
+    font-family: "Courier New", Courier, monospace;
+    width: 18rem;
+  }
 
   &__search {
     @include customFlex(row, nowrap, normal, center);
     gap: 0.5rem;
-    border: 2px solid $highlight;
-    border-radius: 0.5rem;
+    border: 1px solid $highlight;
+    border-radius: 0.3rem;
     padding: 0.1rem 0.2rem;
 
     &-icon {
@@ -18,8 +24,9 @@
   }
 }
 
-@media screen and (max-width: 524px) {
-  .options__search {
+@media screen and (max-width: 629px) {
+  .options__search,
+  .options__select {
     width: 100%;
   }
 }
