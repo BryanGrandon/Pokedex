@@ -15,7 +15,7 @@
 }
 
 .options {
-  @include customFlex(row, nowrap, space-between, center);
+  @include customFlex(row, wrap, space-between, center);
 
   &__search {
     @include customFlex(row, nowrap, normal, center);
@@ -28,5 +28,11 @@
       font-size: 1.6rem;
       color: $highlight;
     }
+  }
+}
+
+@media screen and (max-width: 524px) {
+  .options__search {
+    width: 100%;
   }
 }
