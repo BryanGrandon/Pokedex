@@ -6,8 +6,24 @@
   gap: 0.8rem;
 
   &__select {
-    font-family: "Courier New", Courier, monospace;
-    width: 18rem;
+    @include customFlex(row, wrap, normal, normal);
+    gap: 1rem;
+
+    &-type {
+      color: #fff;
+      letter-spacing: 0.1rem;
+      font-family: "Low Gun Screen", sans-serif;
+      font-size: 1.2rem;
+      border: 1px solid;
+      border-radius: 0.4rem;
+      padding: 0.1rem 0.8rem;
+      &:hover {
+        background-color: $tertiary;
+        color: #000;
+        border-color: transparent !important;
+      }
+    }
+    // width: 18rem;
   }
 
   &__search {
