@@ -1,7 +1,6 @@
 import React from "react";
 import Search from "./search";
 import { CiSearch } from "react-icons/ci";
-
 const pokemonT = [
   { type: "bug", id: 0, color: "#26de81" },
   { type: "dragon", id: 2, color: "#ffeaa7" },
@@ -25,6 +24,10 @@ const pokemonT = [
 function Filter() {
   return (
     <section className="options">
+      <label className="options__search">
+        <CiSearch className="options__search-icon" />
+        <Search />
+      </label>
       <section className="options__select">
         {pokemonT.map((e) => (
           <p
@@ -39,10 +42,6 @@ function Filter() {
           </p>
         ))}
       </section>
-      <label className="options__search">
-        <CiSearch className="options__search-icon" />
-        <Search />
-      </label>
     </section>
   );
 }

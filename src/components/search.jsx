@@ -7,7 +7,7 @@ function Search() {
     <section className="search">
       <input
         type="text"
-        placeholder="Name or Number..."
+        placeholder="Search pokemon"
         className="search__input"
         onChange={handlerChangeSearch}
       />
