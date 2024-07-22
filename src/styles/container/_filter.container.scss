@@ -7,16 +7,20 @@
 
   &__select {
     @include customFlex(row, wrap, normal, normal);
-    gap: 1rem;
+    gap: 1.2rem;
 
     &-type {
+      cursor: pointer;
       color: #fff;
-      letter-spacing: 0.1rem;
+      background: #000;
+      letter-spacing: 0.16rem;
       font-family: "Low Gun Screen", sans-serif;
+      font-weight: bold;
       font-size: 1.2rem;
       border: 1px solid;
       border-radius: 0.4rem;
       padding: 0.1rem 0.8rem;
+
       &:hover {
         background-color: $tertiary;
         color: #000;

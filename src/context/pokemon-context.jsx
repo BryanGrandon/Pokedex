@@ -1,5 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getGeneralInfo, getSpecificInfo } from "../functions/getInfo";
+import {
+  getGeneralInfo,
+  getSpecificInfo,
+  getSpecificType,
+} from "../functions/getInfo";
 
 const PokemonContext = createContext();
 
@@ -37,14 +41,12 @@ function PokemonContextProvider({ children }) {
   const getTwentyPokemon = async (limit = 20) => {
     const data = await getGeneralInfo(limit, offset);
     const results = await getSpecificInfo(data.results);
-
     setSaved([...twentyPokemon, ...results]);
     setTwentyPokemon([...twentyPokemon, ...results]);
     setOffset(offset + 20);
   };
 
   // Button Load more pokemon
-
   const handlerClick = () => {
     if (!inChange) getTwentyPokemon();
     else clickSearch();
@@ -55,6 +57,7 @@ function PokemonContextProvider({ children }) {
   const [limit, setLimit] = useState(0);
   const [inChange, setInChange] = useState(false);
 
+  // Button for loading more pokemon when searching
   const clickSearch = async () => {
     const results = await getSpecificInfo(search.slice(limit, limit + 20));
     setLimit(limit + 20);
@@ -81,6 +84,24 @@ function PokemonContextProvider({ children }) {
     }
   };
 
+  // Filter
+  const handlerClickFilter = async (e) => {
+    // Clear input search
+    const $inputSearch = document.querySelector(".search__input");
+    $inputSearch.value = "";
+
+    const type = e.target.innerText;
+    if (type == "All") setSaved(twentyPokemon);
+
+    let info = await getSpecificType(type);
+    // Show 20 results
+    const results = await getSpecificInfo(info.slice(0, 20));
+    setLimit(20);
+    setSearch(info); // save info to display 20 results
+    setInChange(true);
+    setSaved(results);
+  };
+
   useEffect(() => {
     getAllPokemon();
     getTwentyPokemon();
@@ -88,7 +109,7 @@ function PokemonContextProvider({ children }) {
 
   return (
     <PokemonContext.Provider
-      value={{ saved, handlerClick, handlerChangeSearch }}
+      value={{ saved, handlerClick, handlerChangeSearch, handlerClickFilter }}
     >
       {children}
     </PokemonContext.Provider>

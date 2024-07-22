@@ -15,4 +15,19 @@ const getSpecificInfo = async (info) => {
   return results;
 };
 
-export { getGeneralInfo, getSpecificInfo };
+const getSpecificType = async (pokemonType) => {
+  const url = "https://pokeapi.co/api/v2/type/" + pokemonType;
+  const result = await fetch(url);
+  const data = await result.json();
+  let arrType = [];
+  data.pokemon.map((e) => {
+    let info = {
+      name: e.pokemon.name,
+      url: e.pokemon.url,
+    };
+    arrType.push(info);
+  });
+  return arrType;
+};
+
+export { getGeneralInfo, getSpecificInfo, getSpecificType };

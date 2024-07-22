@@ -1,8 +1,10 @@
-import React from "react";
+import { usePokemonContext } from "../context/pokemon-context";
 import Search from "./search";
 import { CiSearch } from "react-icons/ci";
+
 const pokemonT = [
-  { type: "bug", id: 0, color: "#26de81" },
+  { type: "All", id: 0, color: "#fe1a55" },
+  { type: "bug", id: 1, color: "#26de81" },
   { type: "dragon", id: 2, color: "#ffeaa7" },
   { type: "electric", id: 3, color: "#fed330" },
   { type: "fairy", id: 4, color: "#FF0069" },
@@ -22,6 +24,7 @@ const pokemonT = [
 ];
 
 function Filter() {
+  let { handlerClickFilter } = usePokemonContext();
   return (
     <section className="options">
       <label className="options__search">
@@ -34,9 +37,9 @@ function Filter() {
             key={e.id}
             style={{
               borderColor: e.color,
-              ":hover": "#fff",
             }}
             className="options__select-type"
+            onClick={handlerClickFilter}
           >
             {e.type}
           </p>
