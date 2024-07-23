@@ -1,7 +1,13 @@
 import React from "react";
 import { getPokemonColorType } from "../functions/getPokemonColorType";
+import { useNavigate } from "react-router-dom";
 
 function PokemonCard({ name, number, types, img }) {
+  const navigate = useNavigate();
+  const handlerClick = () => {
+    navigate(`/pokemon/${number}`);
+  };
+
   let pokemonNumber = number.toString().padStart(4, "0");
   let pokemonTypes = [];
 
@@ -20,7 +26,11 @@ function PokemonCard({ name, number, types, img }) {
   };
 
   return (
-    <article className="pokemon" style={colorPokemonCard}>
+    <article
+      className="pokemon"
+      style={colorPokemonCard}
+      onClick={handlerClick}
+    >
       <section>
         <p className="pokemon__number">N°{pokemonNumber}</p>
       </section>
