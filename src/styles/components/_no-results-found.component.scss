@@ -1,0 +1,24 @@
+@use "/src/styles/imports/settings.import" as *;
+@use "/src/styles/imports/tools.import" as *;
+
+.no-results-found {
+  @include customFlex(column, nowrap, center, center);
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+
+  &__svg {
+    max-width: 16rem;
+    filter: drop-shadow(1px 1px 0.2rem #00000083);
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    color: $highlight;
+    text-shadow: 2px 2px 6px $stroke;
+  }
+
+  &__text {
+    color: #fff;
+    font-size: 1.1rem;
+  }
+}

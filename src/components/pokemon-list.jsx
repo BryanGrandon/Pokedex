@@ -1,11 +1,11 @@
 import { usePokemonContext } from "../context/pokemon-context";
 import ButtonMain from "./button-main";
+import NoResultsFound from "./no-results-found";
 import PokemonCard from "./pokemon-card";
 
 function PokemonList() {
   let { saved } = usePokemonContext();
   let { handlerClick } = usePokemonContext();
-
   return (
     <article className="pokemon-article">
       <section className="pokemon-list">
@@ -17,13 +17,6 @@ function PokemonList() {
                 number={e.id}
                 types={e.types}
                 img={e.sprites.other["official-artwork"].front_default}
-                // img={
-                //   e.sprites.other.dream_world.front_default
-                //     ? e.sprites.other.dream_world.front_default
-                //     : e.sprites.other.home.front_default
-                //     ? e.sprites.other.home.front_default
-                //     : e.sprites.other["official-artwork"].front_default
-                // }
               />
             ))
           : null}
@@ -35,18 +28,7 @@ function PokemonList() {
           onClick={handlerClick}
         />
       ) : (
-        <section className="pokemon-alert">
-          <img
-            className="pokemon-alert__svg"
-            src="/src/assets/no-results-found.svg"
-            alt="no-results-found.png"
-          />
-
-          <h2 className="pokemon-alert__title">No results found</h2>
-          <p className="pokemon-alert__text">
-            We couldn't find what you're looking for.
-          </p>
-        </section>
+        <NoResultsFound />
       )}
     </article>
   );
