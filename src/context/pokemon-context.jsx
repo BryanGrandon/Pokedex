@@ -1,9 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
-  getGeneralInfo,
-  getSpecificInfo,
-  getSpecificType,
-} from "../functions/getInfo";
+  getApiInfo,
+  getIndividualInformation,
+} from "../functions/getApiInformation";
 
 const PokemonContext = createContext();
 
@@ -19,13 +18,12 @@ function PokemonContextProvider({ children }) {
   const [pokemonAll, setPokemonAll] = useState();
 
   const getAllPokemon = async () => {
-    const data = await getGeneralInfo(100000, 0);
+    const data = await getApiInfo("pokemon?limit=100000&offset=0");
     const dataAll = [];
 
     data.results.map((e) => {
-      let id = e.url.split("/");
       const info = {
-        id: id.at(-2),
+        id: e.url.split("/").at(-2),
         name: e.name,
         url: e.url,
       };
@@ -39,8 +37,8 @@ function PokemonContextProvider({ children }) {
   const [twentyPokemon, setTwentyPokemon] = useState([]);
 
   const getTwentyPokemon = async (limit = 20) => {
-    const data = await getGeneralInfo(limit, offset);
-    const results = await getSpecificInfo(data.results);
+    const data = await getApiInfo(`pokemon?limit=${limit}&offset=${offset}`);
+    const results = await getIndividualInformation(data.results);
     setSaved([...twentyPokemon, ...results]);
     setTwentyPokemon([...twentyPokemon, ...results]);
     setOffset(offset + 20);
@@ -59,7 +57,9 @@ function PokemonContextProvider({ children }) {
 
   // Button for loading more pokemon when searching
   const clickSearch = async () => {
-    const results = await getSpecificInfo(search.slice(limit, limit + 20));
+    const results = await getIndividualInformation(
+      search.slice(limit, limit + 20)
+    );
     setLimit(limit + 20);
     setSaved([...saved, ...results]);
   };
@@ -74,7 +74,7 @@ function PokemonContextProvider({ children }) {
         ? pokemonAll.filter((e) => e.id.toString().includes(Number(value)))
         : pokemonAll.filter((e) => e.name.includes(value));
 
-      const results = await getSpecificInfo(filtering.slice(0, 20));
+      const results = await getIndividualInformation(filtering.slice(0, 20));
       setSearch(filtering);
       setSaved(results);
       setLimit(20);
@@ -91,15 +91,25 @@ function PokemonContextProvider({ children }) {
     $inputSearch.value = "";
 
     const type = e.target.innerText;
-    if (type == "All") setSaved(twentyPokemon);
-
-    let info = await getSpecificType(type);
-    // Show 20 results
-    const results = await getSpecificInfo(info.slice(0, 20));
-    setLimit(20);
-    setSearch(info); // save info to display 20 results
-    setInChange(true);
-    setSaved(results);
+    if (type !== "All") {
+      let data = await getApiInfo(`/type/${type}`);
+      let arrayType = [];
+      data.pokemon.map((e) => {
+        let info = {
+          name: e.pokemon.name,
+          url: e.pokemon.url,
+        };
+        arrayType.push(info);
+      });
+      const results = await getIndividualInformation(arrayType.slice(0, 20));
+      setLimit(20);
+      setSearch(arrayType);
+      setInChange(true);
+      setSaved(results);
+    } else {
+      setInChange(false);
+      setSaved(twentyPokemon);
+    }
   };
 
   useEffect(() => {

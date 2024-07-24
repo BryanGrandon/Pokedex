@@ -16,13 +16,14 @@ function PokemonList() {
                 name={e.name}
                 number={e.id}
                 types={e.types}
-                img={
-                  e.sprites.other.dream_world.front_default
-                    ? e.sprites.other.dream_world.front_default
-                    : e.sprites.other.home.front_default
-                    ? e.sprites.other.home.front_default
-                    : e.sprites.other["official-artwork"].front_default
-                }
+                img={e.sprites.other["official-artwork"].front_default}
+                // img={
+                //   e.sprites.other.dream_world.front_default
+                //     ? e.sprites.other.dream_world.front_default
+                //     : e.sprites.other.home.front_default
+                //     ? e.sprites.other.home.front_default
+                //     : e.sprites.other["official-artwork"].front_default
+                // }
               />
             ))
           : null}
