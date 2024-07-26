@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
   getApiInfo,
   getIndividualInformation,
-} from "../functions/getApiInformation";
+} from "../services/api/getApiInformation";
 
 const PokemonContext = createContext();
 
