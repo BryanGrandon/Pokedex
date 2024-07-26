@@ -2,10 +2,8 @@ const getStats = (json) => {
   const data = {
     name: json.name,
     number: json.id,
-    image: {
-      default: json.sprites.other["official-artwork"].front_default,
-      shiny: json.sprites.other["official-artwork"].front_shiny,
-    },
+    image: json.sprites.other["official-artwork"].front_default,
+    shiny: json.sprites.other["official-artwork"].front_shiny,
     state: {
       hp: json.stats[0].base_stat,
       attack: json.stats[1].base_stat,
