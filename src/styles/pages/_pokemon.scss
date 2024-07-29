@@ -1,56 +1,80 @@
 @use "/src/styles/imports/settings" as *;
 @use "/src/styles/imports/tools" as *;
 
-.pokemon-info {
+.pokemon {
   @include customFlex(column, nowrap, normal, normal);
   gap: 1rem;
-  max-width: 1200px;
-  margin: auto;
   padding: 2rem 1rem;
 
-  &__navbar {
+  &-header {
     @include customFlex(row, nowrap, space-between, center);
     padding: 0.5rem 1rem;
+
+    &__btn {
+      background-color: $main;
+      color: $stroke;
+      border-radius: 2rem;
+      padding: 0.7rem;
+    }
+
+    &__number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      font-family: "Courier New", Courier, monospace;
+    }
   }
-  &__stats {
+
+  &-main {
     @include customFlex(column, wrap, normal, center);
-    gap: 1rem;
-    &-info {
-      @include customFlex(row, wrap, normal, center);
-      gap: 3rem;
+    gap: 2rem;
+
+    &__h2 {
+      font-size: 1.5rem;
+      font-family: "SPHERE FEZ", sans-serif;
+      font-weight: bold;
+      color: $main;
     }
   }
 }
 
-.info {
-  &-return {
-    background-color: $main;
-    color: $stroke;
-    border-radius: 2rem;
-    padding: 0.7rem;
-  }
-
-  &-number {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 3px;
-    font-family: "Courier New", Courier, monospace;
-  }
-
-  &-name {
-    font-size: 2rem;
-    font-family: "Edit Undo BRK", sans-serif;
-    letter-spacing: 4px;
-    color: $main;
-  }
+.stats {
+  @include customFlex(row, wrap, space-evenly, center);
+  width: 100%;
+  gap: 1rem;
 
   &-img {
-    width: 18rem;
+    width: 20rem;
+    display: block;
     filter: drop-shadow(1px 1px 0.3rem #000000);
+  }
+
+  &-info {
+    @include customFlex(column, nowrap, normal, normal);
+    gap: 1rem;
+    border: 1px solid $main;
+    border-radius: 1.5rem;
+    padding: 1.1rem;
+    font-size: 1.2rem;
+    background-color: #00000062;
+
+    &-single {
+      @include customFlex(row, nowrap, space-between, center);
+      gap: 2rem;
+      text-transform: capitalize;
+      font-family: "Edit Undo BRK", sans-serif;
+      letter-spacing: 1px;
+      color: $main;
+
+      &-name {
+        color: $white;
+      }
+    }
   }
 }
 
-.pokemon-header {
-  @include customFlex(row, nowrap, space-between, center);
-  padding: 0.5rem 1rem;
+@media screen and (max-width: 660px) {
+  .stats-info {
+    width: 100%;
+  }
 }

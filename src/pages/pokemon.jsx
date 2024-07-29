@@ -8,8 +8,9 @@ import { FaArrowLeft } from "react-icons/fa";
 
 function Pokemon() {
   const params = useParams();
-  const [pokemonInfo, setPokemonInfo] = useState([]);
-  const [evolution, setEvolution] = useState();
+  const [info, setInfo] = useState([]);
+  const [evolution, setEvolution] = useState([]);
+  const [stats, setStats] = useState([]);
 
   const getPokemonData = async () => {
     let json = await getApiInfo(`pokemon/${params.id}`);
@@ -19,36 +20,52 @@ function Pokemon() {
     let evolutions = await getApiInfo(urlEvolutions);
     const pokemonInfo = getStats(json);
     const pokemonEvolutions = await getEvolutions(evolutions);
-    setPokemonInfo(pokemonInfo);
+    const pokemonStats = Object.entries(pokemonInfo.state);
+
+    setEvolution(pokemonEvolutions);
+    setInfo(pokemonInfo);
+    setStats(pokemonStats);
   };
 
   useEffect(() => {
     getPokemonData();
   }, []);
 
-  console.log(pokemonInfo);
   return (
     <article className="bg-shadow">
-      <article className="pokemon-info">
+      <article className="pokemon  default-size">
         <header className="pokemon-header">
-          <section className="info-return" onClick={() => history.back()}>
+          <section
+            className="pokemon-header__btn"
+            onClick={() => history.back()}
+          >
             <FaArrowLeft />
           </section>
-          <p className="info-number">Nº{pokemonInfo.id}</p>
+          <p className="pokemon-header__number">Nº{info.id}</p>
         </header>
-        <section className="pokemon-info__stats">
-          <h2 className="info-name">{pokemonInfo.name}</h2>
-          <section className="pokemon-info__stats-info">
+
+        <article className="pokemon-main">
+          <h2 className="pokemon-main__h2">{info.name}</h2>
+          <section className="stats">
             <img
-              className="info-img"
-              src={pokemonInfo.image}
-              alt={`img-pokemon-${pokemonInfo.name}`}
+              className="stats-img"
+              src={info.image}
+              alt={`img-pokemon-${info.name}`}
             />
-            <section>
-              <h2>Stats</h2>
+            <section className="stats-info">
+              {stats.map((e) => (
+                <section key={Math.random() * 10} className="stats-info-single">
+                  <p className="stats-info-single-name">{e[0]}:</p>
+                  <p className="stats-info-single-number">{e[1]}</p>
+                </section>
+              ))}
             </section>
           </section>
-        </section>
+        </article>
+
+        <article>
+          <h3>Evolutions</h3>
+        </article>
       </article>
     </article>
   );
