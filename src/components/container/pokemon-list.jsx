@@ -1,14 +1,15 @@
-import { usePokemonContext } from "../context/pokemon-context";
-import ButtonMain from "./button-main";
-import NoResultsFound from "./no-results-found";
-import PokemonCard from "./pokemon-card";
+import { usePokemonContext } from "../../context/pokemon-context";
+import ButtonMain from "../button-main";
+import NoResultsFound from "../no-results-found";
+import PokemonCard from "../pokemon-card";
 
 function PokemonList() {
   let { saved } = usePokemonContext();
-  let { handlerClick } = usePokemonContext();
+  let { handlerClickLoadPokemon } = usePokemonContext();
+
   return (
-    <article className="pokemon-article">
-      <section className="pokemon-list">
+    <>
+      <section className="list">
         {saved.length != 0
           ? saved?.map((e) => (
               <PokemonCard
@@ -23,14 +24,14 @@ function PokemonList() {
       </section>
       {saved.length != 0 ? (
         <ButtonMain
-          className="button-list"
+          className="list-btn"
           children="Load more pokemon"
-          onClick={handlerClick}
+          onClick={handlerClickLoadPokemon}
         />
       ) : (
         <NoResultsFound />
       )}
-    </article>
+    </>
   );
 }
 

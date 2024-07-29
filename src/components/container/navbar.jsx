@@ -1,22 +1,22 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import ButtonMain from "./button-main";
+import ButtonMain from "../button-main";
 
 function Navbar() {
-  const handlerClickGithub = () => {
-    window.location.href = `https://github.com/BryanGrandon/pokedex`;
-  };
+  const wlh = (text) => (window.location.href = text);
   return (
     <nav className="navbar">
       <a href="https://pokeapi.co/" target="_blank" className="navbar__logo">
         <img
           src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi.svg"
           alt="PokeApi"
-          className="navbar__logo-img"
+          className="navbar-img"
         />
       </a>
 
-      <ButtonMain onClick={handlerClickGithub}>
+      <ButtonMain
+        onClick={() => wlh(`https://github.com/BryanGrandon/pokedex`)}
+      >
         <FaGithub /> GitHub
       </ButtonMain>
     </nav>

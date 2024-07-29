@@ -1,15 +1,17 @@
-import Filter from "../components/filter";
-import Header from "../components/header";
-import PokemonList from "../components/pokemon-list";
+import PokemonList from "../components/container/pokemon-list";
+import Filter from "../components/container/filter";
+import Header from "../components/container/header";
 
 function Home() {
   return (
     <article className="bg-shadow">
       <Header />
-      <main className="main">
+      <article className="home-main default-size">
         <Filter />
-        <PokemonList />
-      </main>
+        <article className="home-list">
+          <PokemonList />
+        </article>
+      </article>
       <footer></footer>
     </article>
   );

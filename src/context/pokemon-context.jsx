@@ -45,7 +45,7 @@ function PokemonContextProvider({ children }) {
   };
 
   // Button Load more pokemon
-  const handlerClick = () => {
+  const handlerClickLoadPokemon = () => {
     if (!inChange) getTwentyPokemon();
     else clickSearch();
   };
@@ -119,7 +119,12 @@ function PokemonContextProvider({ children }) {
 
   return (
     <PokemonContext.Provider
-      value={{ saved, handlerClick, handlerChangeSearch, handlerClickFilter }}
+      value={{
+        saved,
+        handlerClickLoadPokemon,
+        handlerChangeSearch,
+        handlerClickFilter,
+      }}
     >
       {children}
     </PokemonContext.Provider>

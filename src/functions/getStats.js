@@ -1,7 +1,7 @@
 const getStats = (json) => {
   const data = {
     name: json.name,
-    number: json.id,
+    id: json.id,
     image: json.sprites.other["official-artwork"].front_default,
     shiny: json.sprites.other["official-artwork"].front_shiny,
     state: {

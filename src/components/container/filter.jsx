@@ -1,6 +1,5 @@
-import { usePokemonContext } from "../context/pokemon-context";
-import Search from "./search";
-import { CiSearch } from "react-icons/ci";
+import { usePokemonContext } from "../../context/pokemon-context";
+import Search from "../search";
 
 const pokemonT = [
   { type: "All", id: 0, color: "#fe1a55" },
@@ -27,18 +26,15 @@ function Filter() {
   let { handlerClickFilter } = usePokemonContext();
   return (
     <section className="options">
-      <label className="options__search">
-        <CiSearch className="options__search-icon" />
-        <Search />
-      </label>
-      <section className="options__select">
+      <Search />
+      <section className="options-list">
         {pokemonT.map((e) => (
           <p
             key={e.id}
             style={{
               borderColor: e.color,
             }}
-            className="options__select-type"
+            className="options-list__type"
             onClick={handlerClickFilter}
           >
             {e.type}

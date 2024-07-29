@@ -2,14 +2,14 @@ import Navbar from "./navbar";
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header default-size">
       <Navbar />
-      <section className="header__info">
-        <h1 className="header__info-h1">Pokédex</h1>
+      <section className="header-info">
+        <h1 className="header-info-h1">Pokédex</h1>
         <img
           src="/src/assets/pokedex.png"
           alt="Pokedex"
-          className="header__info-img"
+          className="header-info-img"
         />
       </section>
     </header>
