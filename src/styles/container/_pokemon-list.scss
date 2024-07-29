@@ -1,0 +1,14 @@
+@use "/src/styles/imports/settings" as *;
+@use "/src/styles/imports/tools" as *;
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 1rem;
+
+  &-btn {
+    margin: auto;
+    padding: 0.3rem 2rem;
+    font-weight: bold;
+  }
+}

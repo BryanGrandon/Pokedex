@@ -1,5 +1,5 @@
-@use "/src/styles/imports/settings.import" as *;
-@use "/src/styles/imports/tools.import" as *;
+@use "/src/styles/imports/settings" as *;
+@use "/src/styles/imports/tools" as *;
 
 .no-results-found {
   @include customFlex(column, nowrap, center, center);
@@ -13,12 +13,12 @@
 
   &__title {
     font-size: 2.5rem;
-    color: $highlight;
+    color: $main;
     text-shadow: 2px 2px 6px $stroke;
   }
 
   &__text {
-    color: #fff;
+    color: $white;
     font-size: 1.1rem;
   }
 }

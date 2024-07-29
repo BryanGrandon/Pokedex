@@ -1,11 +1,11 @@
-@use "/src/styles/imports/tools.import" as *;
-@use "/src//styles//imports/settings.import" as *;
+@use "/src/styles/imports/tools" as *;
+@use "/src//styles//imports/settings" as *;
 
 .navbar {
   @include customFlex(row, nowrap, space-between, center);
   padding: 0.5rem;
 
-  &__logo-img {
+  &-img {
     height: 3rem;
   }
 }

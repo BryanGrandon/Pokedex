@@ -1,0 +1,56 @@
+@use "/src/styles/imports/settings" as *;
+@use "/src/styles/imports/tools" as *;
+
+.pokemon-info {
+  @include customFlex(column, nowrap, normal, normal);
+  gap: 1rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1rem;
+
+  &__navbar {
+    @include customFlex(row, nowrap, space-between, center);
+    padding: 0.5rem 1rem;
+  }
+  &__stats {
+    @include customFlex(column, wrap, normal, center);
+    gap: 1rem;
+    &-info {
+      @include customFlex(row, wrap, normal, center);
+      gap: 3rem;
+    }
+  }
+}
+
+.info {
+  &-return {
+    background-color: $main;
+    color: $stroke;
+    border-radius: 2rem;
+    padding: 0.7rem;
+  }
+
+  &-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  &-name {
+    font-size: 2rem;
+    font-family: "Edit Undo BRK", sans-serif;
+    letter-spacing: 4px;
+    color: $main;
+  }
+
+  &-img {
+    width: 18rem;
+    filter: drop-shadow(1px 1px 0.3rem #000000);
+  }
+}
+
+.pokemon-header {
+  @include customFlex(row, nowrap, space-between, center);
+  padding: 0.5rem 1rem;
+}

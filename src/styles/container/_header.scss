@@ -1,0 +1,18 @@
+@use "/src/styles/imports/tools" as *;
+@use "/src/styles/imports/settings" as *;
+
+.header-info {
+  @include customFlex(column, nowrap, normal, center);
+
+  &-h1 {
+    font-size: 4rem;
+    font-family: "SPHERE FEZ", sans-serif;
+    color: $white;
+  }
+
+  &-img {
+    width: auto;
+    height: 24.5rem;
+    object-fit: contain;
+  }
+}

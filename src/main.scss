@@ -1,12 +1,24 @@
-@use "/src/styles/imports/generic.import";
-@use "/src/styles/imports/settings.import";
-@use "/src/styles/imports/tools.import";
-@use "/src/styles/imports/components.import";
-@use "/src/styles/imports/container.import";
+@use "/src/styles/imports/generic";
+@use "/src/styles/imports/settings";
+@use "/src/styles/imports/tools";
+@use "/src/styles/imports/components";
+@use "/src/styles/imports/container";
+@use "/src/styles/imports/pages";
 
 body {
-  background-image: url("https://wallpapercave.com/wp/wp12200642.png");
+  background-image: url(/src/assets/background.png);
   background-position: center;
-  height: 100vh;
   background-size: cover;
+  height: 100vh;
+}
+
+.bg-shadow {
+  background-color: #00000091;
+  min-height: 100vh;
+}
+
+.default-size {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
 }

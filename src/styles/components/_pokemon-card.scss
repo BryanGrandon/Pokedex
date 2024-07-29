@@ -1,13 +1,13 @@
-@use "/src/styles/imports/tools.import" as *;
-@use "/src/styles/imports/settings.import" as *;
+@use "/src/styles/imports/tools" as *;
+@use "/src/styles/imports/settings" as *;
 
 // by dynamic colors of the pokemon-card.jsx
-.pokemon:hover {
-  border-color: $tertiary !important;
+.card:hover {
+  border-color: $secondary !important;
   box-shadow: none !important;
 }
 
-.pokemon {
+.card {
   @include customFlex(column, nowrap, space-evenly, normal);
   gap: 0.8rem;
   background-image: url("/src/assets/bg-pokemon-card.jpg");
@@ -16,7 +16,7 @@
   border: 2px solid;
   border-radius: 1rem;
   padding: 1rem;
-  color: #fff;
+  color: $white;
   cursor: pointer;
 
   &__number {

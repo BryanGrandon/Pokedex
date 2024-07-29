@@ -1,5 +1,5 @@
-@use "../imports/settings.import" as *;
-@use "../imports/tools.import" as *;
+@use "../imports/settings" as *;
+@use "../imports/tools" as *;
 
 /* Here we define the custom properties */
 :root {
@@ -8,8 +8,8 @@
 }
 
 html {
-  @include customScroll($highlight, $stroke, 0.1rem);
-  @include customSelection($highlight, $stroke);
+  @include customScroll($main, $stroke, 0.1rem);
+  @include customSelection($main, $stroke);
 }
 
 /* We reset the margins and paddings of all labels. */
@@ -139,7 +139,7 @@ body {
   font-size: 100%;
   font-family: var(--type-primary);
   color: $dark;
-  background-color: $white;
+  background-color: $light;
   line-height: 1.4em;
   /* optional */
   font-smooth: always;
@@ -165,7 +165,7 @@ p {
 
 @media (prefers-color-scheme: dark) {
   body {
-    color: $white;
+    color: $light;
     background-color: $dark;
   }
 }
