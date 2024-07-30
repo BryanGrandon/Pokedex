@@ -49,6 +49,16 @@
     filter: drop-shadow(1px 1px 0.3rem #000000);
   }
 
+  &-type {
+    @include customFlex(row, nowrap, space-evenly, center);
+    font-size: 1.1rem;
+    & > p {
+      padding: 0.2rem 0;
+      min-width: 7rem;
+      text-align: center;
+    }
+  }
+
   &-info {
     @include customFlex(column, nowrap, normal, normal);
     gap: 1rem;

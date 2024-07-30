@@ -8,9 +8,10 @@ const getEvolutions = async (json) => {
     let minLevel = arr.evolution_details
       ? null
       : arr[0].evolution_details[0].min_level;
-    let name = arr.species ? arr.species.name : arr[0].species.name;
+    let url = arr.species ? arr.species.url : arr[0].species.url;
 
-    const json = await getApiInfo(`pokemon/${name}`);
+    let pokemonUrl = url.split("/v2/pokemon-species/").at(-1);
+    const json = await getApiInfo(`pokemon/${pokemonUrl}`);
 
     let data = {
       name: json.name,

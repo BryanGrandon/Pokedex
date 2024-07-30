@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import { getApiInfo } from "../services/api/getApiInformation";
 // Functions
 import { getStats } from "../functions/getStats";
+import { getTypesAndColor } from "../functions/getPokemonColorType";
 import { getEvolutions } from "../functions/getEvolutions";
 import { FaArrowLeft } from "react-icons/fa";
+import Type from "../components/type";
 
 function Pokemon() {
   const params = useParams();
@@ -14,18 +16,21 @@ function Pokemon() {
 
   const getPokemonData = async () => {
     let json = await getApiInfo(`pokemon/${params.id}`);
+    const pokemonInfo = getStats(json);
+    setInfo(pokemonInfo);
+
     let urlSpecies = json.species.url.split("/v2/").at(-1);
     let pokemonSpecies = await getApiInfo(urlSpecies);
     let urlEvolutions = pokemonSpecies.evolution_chain.url.split("/v2/").at(-1);
     let evolutions = await getApiInfo(urlEvolutions);
-    const pokemonInfo = getStats(json);
     const pokemonEvolutions = await getEvolutions(evolutions);
-    const pokemonStats = Object.entries(pokemonInfo.state);
-
     setEvolution(pokemonEvolutions);
-    setInfo(pokemonInfo);
+
+    const pokemonStats = Object.entries(pokemonInfo.state);
     setStats(pokemonStats);
   };
+
+  const pokemonType = getTypesAndColor(info.type);
 
   useEffect(() => {
     getPokemonData();
@@ -47,11 +52,18 @@ function Pokemon() {
         <article className="pokemon-main">
           <h2 className="pokemon-main__h2">{info.name}</h2>
           <section className="stats">
-            <img
-              className="stats-img"
-              src={info.image}
-              alt={`img-pokemon-${info.name}`}
-            />
+            <section>
+              <img
+                className="stats-img"
+                src={info.image}
+                alt={`img-pokemon-${info.name}`}
+              />
+              <section className="stats-type">
+                {pokemonType.map((type) => (
+                  <Type key={type.id} name={type.name} color={type.color} />
+                ))}
+              </section>
+            </section>
             <section className="stats-info">
               {stats.map((e) => (
                 <section key={Math.random() * 10} className="stats-info-single">
@@ -65,6 +77,7 @@ function Pokemon() {
 
         <article>
           <h3>Evolutions</h3>
+          <section>{}</section>
         </article>
       </article>
     </article>

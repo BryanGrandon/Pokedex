@@ -87,7 +87,7 @@ function PokemonContextProvider({ children }) {
   // Filter
   const handlerClickFilter = async (e) => {
     // Clear input search
-    const $inputSearch = document.querySelector(".search__input");
+    const $inputSearch = document.querySelector(".search-input");
     $inputSearch.value = "";
 
     const type = e.target.innerText;
