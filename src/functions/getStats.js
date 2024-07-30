@@ -14,7 +14,7 @@ const getStats = (json) => {
     },
     type: [],
   };
-  json.types.forEach((e) => data.type.push(e.type.name));
+  json.types.forEach((e) => data.type.push(e));
   return data;
 };
 

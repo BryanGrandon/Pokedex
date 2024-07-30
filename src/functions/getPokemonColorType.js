@@ -25,4 +25,17 @@ const getPokemonColorType = (type) => {
   return bg;
 };
 
-export { getPokemonColorType };
+const getTypesAndColor = (types) => {
+  let pokemonTypes = [];
+  types?.map((e) => {
+    const info = {
+      id: Math.floor(Math.random() * 2000),
+      name: e.type.name,
+      color: getPokemonColorType(e.type.name),
+    };
+    pokemonTypes.push(info);
+  });
+  return pokemonTypes;
+};
+
+export { getTypesAndColor };

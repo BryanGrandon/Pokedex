@@ -43,13 +43,5 @@
   &__types {
     @include customFlex(row, nowrap, center, center);
     gap: 1rem;
-
-    &-type {
-      border-radius: 0.4rem;
-      font-family: "Edit Undo BRK", sans-serif;
-      padding: 0.1rem 0.6rem;
-      background: #00000085;
-      border: 1px solid transparent;
-    }
   }
 }
