@@ -20,7 +20,7 @@ const getEvolutions = async (json) => {
       id: json.id,
       type: [],
     };
-    json.types.forEach((e) => data.type.push(e.type.name));
+    json.types.forEach((e) => data.type.push(e));
     evolutions.push(data);
     arr = arr.evolves_to ? arr.evolves_to : arr[0].evolves_to;
   }

@@ -1,0 +1,48 @@
+@use "/src/styles/imports/tools" as *;
+@use "/src/styles/imports/settings" as *;
+
+.evolution {
+  @include customFlex(column, nowrap, normal, center);
+  gap: 1rem;
+  font-family: "Edit Undo BRK", sans-serif;
+
+  &-header {
+    @include customFlex(row, nowrap, end, normal);
+    width: 100%;
+    gap: 0.5rem;
+    letter-spacing: 1px;
+    color: $secondary;
+  }
+
+  &-id {
+    letter-spacing: 3px;
+  }
+
+  &-image {
+    width: 9rem;
+    height: 9rem;
+    object-fit: contain;
+    border: 1px solid $main;
+    border-radius: 50%;
+    padding: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $secondary;
+    }
+  }
+
+  &-name {
+    text-align: center;
+    letter-spacing: 3px;
+  }
+
+  &-type {
+    @include customFlex(row, nowrap, center, center);
+    gap: 1rem;
+  }
+
+  &-level {
+    letter-spacing: 1px;
+  }
+}
