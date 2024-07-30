@@ -3,7 +3,7 @@
 
 .pokemon {
   @include customFlex(column, nowrap, normal, normal);
-  gap: 1rem;
+  gap: 2rem;
   padding: 2rem 1rem;
 
   &-header {
@@ -80,6 +80,27 @@
         color: $white;
       }
     }
+  }
+}
+
+.evolutions {
+  @include customFlex(column, nowrap, normal, normal);
+  gap: 2rem;
+  border: 1px solid $main;
+  background-color: #00000062;
+  border-radius: 1.5rem;
+  padding: 1rem;
+
+  &-pokemon {
+    @include customFlex(row, wrap, space-evenly, normal);
+    gap: 1rem;
+  }
+  &-title {
+    font-family: "SPHERE FEZ", sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: $main;
+    padding: 0 1.5rem;
   }
 }
 

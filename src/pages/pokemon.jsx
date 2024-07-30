@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getApiInfo } from "../services/api/getApiInformation";
 // Functions
 import { getStats } from "../functions/getStats";
@@ -7,6 +7,7 @@ import { getTypesAndColor } from "../functions/getPokemonColorType";
 import { getEvolutions } from "../functions/getEvolutions";
 import { FaArrowLeft } from "react-icons/fa";
 import Type from "../components/type";
+import Evolution from "../components/evolution";
 
 function Pokemon() {
   const params = useParams();
@@ -32,6 +33,8 @@ function Pokemon() {
 
   const pokemonType = getTypesAndColor(info.type);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     getPokemonData();
   }, []);
@@ -42,7 +45,9 @@ function Pokemon() {
         <header className="pokemon-header">
           <section
             className="pokemon-header__btn"
-            onClick={() => history.back()}
+            onClick={(e) => {
+              navigate("/");
+            }}
           >
             <FaArrowLeft />
           </section>
@@ -75,9 +80,20 @@ function Pokemon() {
           </section>
         </article>
 
-        <article>
-          <h3>Evolutions</h3>
-          <section>{}</section>
+        <article className="evolutions">
+          <h3 className="evolutions-title">Evolutions</h3>
+          <section className="evolutions-pokemon">
+            {evolution.map((e) => (
+              <Evolution
+                key={Math.random() * 10}
+                name={e.name}
+                image={e.image}
+                type={e.type}
+                level={e.min_level}
+                id={e.id}
+              />
+            ))}
+          </section>
         </article>
       </article>
     </article>
