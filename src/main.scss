@@ -6,7 +6,7 @@
 @use "/src/styles/imports/pages";
 
 body {
-  background-image: url(/src/assets/background.png);
+  background-image: url("/src/assets/background.png");
   background-position: center;
   background-size: cover;
   height: 100vh;
