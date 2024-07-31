@@ -1,5 +1,5 @@
-@use "/src/styles/imports/tools" as *;
-@use "/src/styles/imports/settings" as *;
+@use "../imports/tools" as *;
+@use "../imports/settings" as *;
 
 .evolution {
   @include customFlex(column, nowrap, normal, center);

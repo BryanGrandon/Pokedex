@@ -1,6 +1,6 @@
-@forward "/src/styles/components/pokemon-card";
-@forward "/src/styles/components/button-main";
-@forward "/src/styles/components/search";
-@forward "/src/styles/components/no-results-found";
-@forward "/src/styles/components/type";
-@forward "/src/styles/components/evolution";
+@forward "../components/button-main";
+@forward "../components/evolution";
+@forward "../components/no-results-found";
+@forward "../components/pokemon-card";
+@forward "../components/search";
+@forward "../components/type";

@@ -1,5 +1,5 @@
-@use "/src/styles/imports/tools" as *;
-@use "/src/styles/imports/settings" as *;
+@use "../imports/tools" as *;
+@use "../imports/settings" as *;
 
 // by dynamic colors of the pokemon-card.jsx
 .card:hover {
@@ -10,7 +10,7 @@
 .card {
   @include customFlex(column, nowrap, space-evenly, normal);
   gap: 0.8rem;
-  background-image: url("/src/assets/bg-pokemon-card.jpg");
+  background-image: url("../../assets/bg-pokemon-card.jpg");
   background-size: cover;
   background-position: center;
   border: 2px solid;

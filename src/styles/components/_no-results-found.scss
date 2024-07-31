@@ -1,5 +1,5 @@
-@use "/src/styles/imports/settings" as *;
-@use "/src/styles/imports/tools" as *;
+@use "../imports/tools" as *;
+@use "../imports/settings" as *;
 
 .no-results-found {
   @include customFlex(column, nowrap, center, center);

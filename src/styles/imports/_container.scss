@@ -1,5 +1,5 @@
-@forward "/src/styles/container/header";
-@forward "/src/styles/container/pokemon-list";
-@forward "/src/styles/container/filter";
-@forward "/src/styles/container/navbar";
-@forward "/src/styles/container/footer";
+@forward "../container/filter";
+@forward "../container/footer";
+@forward "../container/header";
+@forward "../container/navbar";
+@forward "../container/pokemon-list";

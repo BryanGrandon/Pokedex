@@ -7,7 +7,7 @@ function Header() {
       <section className="header-info">
         <h1 className="header-info-h1">Pokédex</h1>
         <img
-          src="/src/assets/pokedex.png"
+          src="./assets/pokedex.png"
           alt="Pokedex"
           className="header-info-img"
         />
