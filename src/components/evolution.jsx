@@ -8,7 +8,13 @@ function Evolution({ name, image, type, id, level }) {
   const navigate = useNavigate();
 
   return (
-    <section className="evolution" onClick={() => navigate(`/pokemon/${id}`)}>
+    <section
+      className="evolution"
+      onClick={() => {
+        navigate(`/pokemon/${id}`);
+        location.reload();
+      }}
+    >
       <section className="evolution-header">
         <p></p>
         <p className="evolution-id">N°{id}</p>
@@ -20,6 +26,7 @@ function Evolution({ name, image, type, id, level }) {
           <Type key={type.id} name={type.name} color={type.color} />
         ))}
       </section>
+      {console.log(level)}
       {level ? (
         <p className="evolution-level">Evolution to level {level}</p>
       ) : null}

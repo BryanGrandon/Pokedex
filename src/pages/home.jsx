@@ -1,6 +1,7 @@
 import PokemonList from "../components/container/pokemon-list";
 import Filter from "../components/container/filter";
 import Header from "../components/container/header";
+import Footer from "../components/container/footer";
 
 function Home() {
   return (
@@ -12,7 +13,7 @@ function Home() {
           <PokemonList />
         </article>
       </article>
-      <footer></footer>
+      <Footer />
     </article>
   );
 }

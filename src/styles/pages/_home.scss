@@ -9,6 +9,6 @@
   }
   &-list {
     @include customFlex(column, nowrap, normal, normal);
-    gap: 1rem;
+    gap: 2rem;
   }
 }
