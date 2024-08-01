@@ -11,7 +11,7 @@ function Evolution({ name, image, type, id, level }) {
     <section
       className="evolution"
       onClick={() => {
-        navigate(`/Pokedex/pokemon/${id}`);
+        navigate(`/pokemon/${id}`);
         location.reload();
       }}
     >
