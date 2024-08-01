@@ -45,7 +45,7 @@ function Pokemon() {
         <header className="pokemon-header">
           <section
             className="pokemon-header__btn"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/Pokedex/")}
           >
             <FaArrowLeft />
           </section>

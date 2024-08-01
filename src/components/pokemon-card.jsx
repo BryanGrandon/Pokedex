@@ -18,7 +18,7 @@ function PokemonCard({ name, number, types, img }) {
     <article
       className="card"
       style={styleCard}
-      onClick={() => navigate(`/pokemon/${number}`)}
+      onClick={() => navigate(`/Pokedex/pokemon/${number}`)}
     >
       <section>
         <p className="card__number">N°{pokemonNumber}</p>
