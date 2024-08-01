@@ -3,9 +3,11 @@
 
 .navbar {
   @include customFlex(row, nowrap, space-between, center);
-  padding: 0.5rem;
+  gap: 2rem;
+  padding: 0.5rem 0;
 
   &-img {
-    height: 3rem;
+    object-fit: contain;
+    width: 8rem;
   }
 }
