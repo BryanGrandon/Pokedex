@@ -1,4 +1,12 @@
+@use "./styles/imports/components";
+@use "./styles/imports/container";
+@use "./styles/imports/generic";
+@use "./styles/imports/pages";
+@use "./styles/imports/settings";
+@use "./styles/imports/tools";
+
 body {
+  background-image: url("./assets/background.png");
   background-position: center;
   background-size: cover;
   height: 100vh;

@@ -1,0 +1,14 @@
+@use "/src/styles/imports/tools" as *;
+@use "/src/styles/imports/settings" as *;
+
+.home {
+  &-main {
+    @include customFlex(column, nowrap, normal, normal);
+    gap: 2rem;
+    padding: 1rem;
+  }
+  &-list {
+    @include customFlex(column, nowrap, normal, normal);
+    gap: 2rem;
+  }
+}

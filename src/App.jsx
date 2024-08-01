@@ -1,13 +1,15 @@
-import { usePokemonContext } from "./context/pokemon-context";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/home";
 
 function App() {
-  let { saved } = usePokemonContext();
-
-  console.log(saved);
-
   return (
     <>
-      <h1>Hello</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/pokedex/" element={<Home />} />
+          <Route path="/Pokedex/pokemon/:id" element={<div>SS</div>} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
