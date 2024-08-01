@@ -6,11 +6,6 @@
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
 
-  &__svg {
-    max-width: 16rem;
-    filter: drop-shadow(1px 1px 0.2rem #00000083);
-  }
-
   &__title {
     font-size: 2.5rem;
     color: $main;

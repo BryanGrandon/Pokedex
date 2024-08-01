@@ -11,7 +11,7 @@ function Evolution({ name, image, type, id, level }) {
     <section
       className="evolution"
       onClick={() => {
-        navigate(`/pokemon/${id}`);
+        navigate(`/Pokedex/pokemon/${id}`);
         location.reload();
       }}
     >
@@ -26,7 +26,6 @@ function Evolution({ name, image, type, id, level }) {
           <Type key={type.id} name={type.name} color={type.color} />
         ))}
       </section>
-      {console.log(level)}
       {level ? (
         <p className="evolution-level">Evolution to level {level}</p>
       ) : null}
